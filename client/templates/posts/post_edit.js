@@ -9,6 +9,11 @@ Template.postEdit.events({
 			title: e.target.title.value
 		}
 
+
+		// =!>
+		// Use a server method to make sure edited posts are not
+		// updated to already existing URLs
+
 		Posts.update(currentPostId, {$set: postProperties}, function(error){
 			if (error) {
 				alert(error.reason);
@@ -18,7 +23,7 @@ Template.postEdit.events({
 		});
 	},
 
-	"click delete": function(e){
+	"click .delete": function(e){
 		e.preventDefault();
 
 		if (confirm("Delete this post?")) {
